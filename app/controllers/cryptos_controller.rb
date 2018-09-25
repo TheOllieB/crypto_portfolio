@@ -1,10 +1,15 @@
 class CryptosController < ApplicationController
   before_action :set_crypto, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :correct_user, only: [:edit, :update, :show, :destroy]
   # GET /cryptos
   # GET /cryptos.json
   def index
+    @url ='https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=100'
+    @uri = URI(@url)
+    @response = Net::HTTP.get(@uri)
+    @search_crypto = JSON.parse(@response)
+    
     @cryptos = Crypto.all
   end
 
