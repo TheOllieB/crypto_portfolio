@@ -5,7 +5,7 @@ class CryptosController < ApplicationController
   # GET /cryptos
   # GET /cryptos.json
   def index
-    @url ='https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=100'
+    @url ='https://api.coinmarketcap.com/v1/ticker/?convert=gbp&limit=50'
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @search_crypto = JSON.parse(@response)

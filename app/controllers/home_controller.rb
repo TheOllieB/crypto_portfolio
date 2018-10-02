@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   	require 'net/http'
   	require 'json'
-  	@url ='https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=100'
+  	@url ='https://api.coinmarketcap.com/v1/ticker/?convert=gbp&limit=50'
   	@uri = URI(@url)
   	@response = Net::HTTP.get(@uri)
   	@coins = JSON.parse(@response)
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   def search
   	require 'net/http'
   	require 'json'
-  	@url ='https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=100'
+  	@url ='https://api.coinmarketcap.com/v1/ticker/?convert=gbp&limit=50'
   	@uri = URI(@url)
   	@response = Net::HTTP.get(@uri)
   	@search_coin = JSON.parse(@response)
