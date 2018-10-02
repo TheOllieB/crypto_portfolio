@@ -16,6 +16,14 @@ class CryptosController < ApplicationController
   # GET /cryptos/1
   # GET /cryptos/1.json
   def show
+    require 'net/http'
+    require 'json'
+    @url ='https://api.coinmarketcap.com/v1/ticker/?convert=gbp&limit=50'
+    @uri = URI(@url)
+    @response = Net::HTTP.get(@uri)
+    @show_crypto = JSON.parse(@response)
+    
+    @cryptos = Crypto.all
   end
 
   # GET /cryptos/new

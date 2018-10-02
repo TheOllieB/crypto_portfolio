@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   	@response = Net::HTTP.get(@uri)
   	@coins = JSON.parse(@response)
   end
+  
   def about
   end
 
@@ -26,6 +27,5 @@ class HomeController < ApplicationController
   	if @symbol == ""
   		@symbol = "Please enter a Currency!"
   	end
-
   end
 end
